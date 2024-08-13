@@ -9,7 +9,7 @@ import {
 
 import { type CartItem } from "../cart/Cart";
 import { getOrder } from "../../servers/apiRestaurant";
-import { LoaderFunctionArgs } from "react-router-dom";
+import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 
 type Order = {
   id: string;
@@ -20,13 +20,11 @@ type Order = {
   priorityPrice: number;
   status: string;
 };
-interface OrderProps {
-  order: Order;
-}
 
-const Order: React.FC<OrderProps> = ({ order }) => {
-  // Everyone can search for all orders, so for privacy reasons we're gonna gonna exclude names or address,
-  //  these are only for the restaurant staff
+const Order: React.FC = () => {
+  const order = useLoaderData() as Order;
+  // Everyone can search for all orders, so for privacy reasons we're gonna
+  // exclude names or address, these are only for the restaurant staff
   const {
     id,
     status,
