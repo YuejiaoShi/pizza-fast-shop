@@ -9,7 +9,7 @@ const AppLayout: React.FC = () => {
       <Header />
       <main>
         <h1>Content</h1>
-        {/* <Outlet /> */}
+        <Outlet />
       </main>
       <CartOverview />
     </div>
