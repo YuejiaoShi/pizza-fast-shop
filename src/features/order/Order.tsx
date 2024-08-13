@@ -7,22 +7,11 @@ import {
   formatDate,
 } from "../../utilities/helpers";
 
-import { type CartItem } from "../cart/Cart";
-import { getOrder } from "../../servers/apiRestaurant";
+import { getOrder, type OrderType } from "../../servers/apiRestaurant";
 import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 
-type Order = {
-  id: string;
-  priority: boolean;
-  estimatedDelivery: string;
-  cart: CartItem[];
-  orderPrice: number;
-  priorityPrice: number;
-  status: string;
-};
-
 const Order: React.FC = () => {
-  const order = useLoaderData() as Order;
+  const order = useLoaderData() as OrderType;
   // Everyone can search for all orders, so for privacy reasons we're gonna
   // exclude names or address, these are only for the restaurant staff
   const {
@@ -69,9 +58,9 @@ const Order: React.FC = () => {
 //  including route parameters and request details.
 export const loader = async ({
   params,
-}: LoaderFunctionArgs): Promise<Order> => {
+}: LoaderFunctionArgs): Promise<OrderType> => {
   const orderId = params.orderId as string;
-  const order: Order = await getOrder(orderId);
+  const order: OrderType = await getOrder(orderId);
   return order;
 };
 

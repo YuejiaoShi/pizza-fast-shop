@@ -1,10 +1,10 @@
 import React from "react";
-import { getMenu, type Pizza } from "../../servers/apiRestaurant";
+import { getMenu, type PizzaType } from "../../servers/apiRestaurant";
 import { useLoaderData } from "react-router-dom";
 import MenuItem from "./MenuItem";
 
 const Menu: React.FC = () => {
-  const menu = useLoaderData() as Pizza[];
+  const menu = useLoaderData() as PizzaType[];
   return (
     <ul>
       {menu.map((pizza) => (
@@ -15,8 +15,8 @@ const Menu: React.FC = () => {
 };
 
 // loader function to fetch the menu data
-export const loader = async (): Promise<Pizza[]> => {
-  const menu: Pizza[] = await getMenu();
+export const loader = async (): Promise<PizzaType[]> => {
+  const menu: PizzaType[] = await getMenu();
   return menu;
 };
 

@@ -1,9 +1,9 @@
 import React from "react";
 import { formatCurrency } from "../../utilities/helpers";
-import { Pizza } from "../../servers/apiRestaurant";
+import { PizzaType } from "../../servers/apiRestaurant";
 
 export type MenuItemProps = {
-  pizza: Pizza;
+  pizza: PizzaType;
 };
 
 const MenuItem: React.FC<MenuItemProps> = ({ pizza }) => {
