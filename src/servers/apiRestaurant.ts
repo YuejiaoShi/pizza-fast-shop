@@ -1,3 +1,5 @@
+import Order from "../features/order/Order";
+
 const API_URL = "https://react-fast-pizza-api.onrender.com/api";
 
 export interface Pizza {
@@ -7,17 +9,6 @@ export interface Pizza {
   ingredients: string[];
   soldOut: boolean;
   imageUrl: string;
-}
-
-interface Order {
-  id: string;
-  items: {
-    id: string;
-    quantity: number;
-  }[];
-  status: string;
-  totalPrice: number;
-  createdAt: string;
 }
 
 interface CreateOrderRequest {
