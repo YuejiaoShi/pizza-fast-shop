@@ -1,9 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useRouteError } from "react-router-dom";
 
-const NotFound: React.FC = () => {
+const Error: React.FC = () => {
   const navigate = useNavigate();
-
+  const error = useRouteError();
+  console.log(error);
   return (
     <div>
       <h1>Something went wrong 😢</h1>
@@ -13,4 +14,4 @@ const NotFound: React.FC = () => {
   );
 };
 
-export default NotFound;
+export default Error;
