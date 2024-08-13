@@ -22,8 +22,11 @@ type Order = {
   priorityPrice: number;
   status: string;
 };
+interface OrderProps {
+  order: Order;
+}
 
-const order: Order = {
+const order = {
   id: "ABCDEF",
   customer: "Jonas",
   phone: "123456789",
@@ -59,7 +62,7 @@ const order: Order = {
   status: "Pending",
 };
 
-const Order: React.FC = () => {
+const Order: React.FC<OrderProps> = ({ order }) => {
   // Everyone can search for all orders, so for privacy reasons we're gonna gonna exclude names or address,
   //  these are only for the restaurant staff
   const {
