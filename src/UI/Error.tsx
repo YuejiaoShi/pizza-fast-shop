@@ -3,6 +3,7 @@ import { useNavigate, useRouteError } from "react-router-dom";
 
 interface ErrorResponseImpl {
   data?: string;
+  message?: string;
 }
 
 const Error: React.FC = () => {
@@ -12,7 +13,7 @@ const Error: React.FC = () => {
   return (
     <div>
       <h1>Something went wrong 😢</h1>
-      <p>{error.data}</p>
+      <p>{error.data || error.message}</p>
       <button onClick={() => navigate(-1)}>&larr; Go back</button>
     </div>
   );
