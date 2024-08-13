@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-type CartItem = {
+export type CartItem = {
   pizzaId: number;
   name: string;
   quantity: number;
