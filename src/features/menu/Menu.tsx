@@ -1,8 +1,10 @@
 import React from "react";
 import { getMenu, MenuItem } from "../../servers/apiRestaurant";
-
+import { useLoaderData } from "react-router-dom";
 
 const Menu: React.FC = () => {
+  const menu = useLoaderData();
+  console.log(menu);
   return <h1>Menu</h1>;
 };
 
