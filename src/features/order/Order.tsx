@@ -70,12 +70,4 @@ const Order: React.FC<OrderProps> = ({ order }) => {
 // LoaderFunctionArgs types the parameters for a React Router loader function,
 //  including route parameters and request details.
 
-export const loader = async ({
-  params,
-}: LoaderFunctionArgs): Promise<Order> => {
-  const orderId = params.orderId as string;
-  const order: Order = await getOrder(orderId);
-  return order;
-};
-
 export default Order;
