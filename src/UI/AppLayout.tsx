@@ -1,13 +1,9 @@
 import React from "react";
 import Header from "./Header";
 import CartOverview from "../features/cart/CartOverview";
-import { Outlet, useNavigation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 const AppLayout: React.FC = () => {
-  const navigation = useNavigation();
-
-  const isLoading = navigation.state === "loading";
-  console.log(navigation, isLoading);
   return (
     <div>
       <Header />
