@@ -16,7 +16,7 @@ const Menu: React.FC = () => {
 
 // loader function to fetch the menu data
 export const loader = async (): Promise<Pizza[]> => {
-  const menu = await getMenu();
+  const menu: Pizza[] = await getMenu();
   return menu;
 };
 

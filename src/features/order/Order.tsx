@@ -8,16 +8,14 @@ import {
 } from "../../utilities/helpers";
 
 import { type CartItem } from "../cart/Cart";
+import { getOrder } from "../../servers/apiRestaurant";
+import { LoaderFunctionArgs } from "react-router-dom";
 
 type Order = {
   id: string;
-  customer: string;
-  phone: string;
-  address: string;
   priority: boolean;
   estimatedDelivery: string;
   cart: CartItem[];
-  position: string;
   orderPrice: number;
   priorityPrice: number;
   status: string;
@@ -25,42 +23,6 @@ type Order = {
 interface OrderProps {
   order: Order;
 }
-
-const order = {
-  id: "ABCDEF",
-  customer: "Jonas",
-  phone: "123456789",
-  address: "Arroios, Lisbon , Portugal",
-  priority: true,
-  estimatedDelivery: "2027-04-25T10:00:00",
-  cart: [
-    {
-      pizzaId: 7,
-      name: "Napoli",
-      quantity: 3,
-      unitPrice: 16,
-      totalPrice: 48,
-    },
-    {
-      pizzaId: 5,
-      name: "Diavola",
-      quantity: 2,
-      unitPrice: 16,
-      totalPrice: 32,
-    },
-    {
-      pizzaId: 3,
-      name: "Romana",
-      quantity: 1,
-      unitPrice: 15,
-      totalPrice: 15,
-    },
-  ],
-  position: "-9.000,38.000",
-  orderPrice: 95,
-  priorityPrice: 19,
-  status: "Pending",
-};
 
 const Order: React.FC<OrderProps> = ({ order }) => {
   // Everyone can search for all orders, so for privacy reasons we're gonna gonna exclude names or address,
@@ -103,6 +65,17 @@ const Order: React.FC<OrderProps> = ({ order }) => {
       </div>
     </div>
   );
+};
+
+// LoaderFunctionArgs types the parameters for a React Router loader function,
+//  including route parameters and request details.
+
+export const loader = async ({
+  params,
+}: LoaderFunctionArgs): Promise<Order> => {
+  const orderId = params.orderId as string;
+  const order: Order = await getOrder(orderId);
+  return order;
 };
 
 export default Order;
