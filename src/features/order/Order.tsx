@@ -56,7 +56,7 @@ const order: Order = {
   position: "-9.000,38.000",
   orderPrice: 95,
   priorityPrice: 19,
-  // status: "Pending",
+  status: "Pending",
 };
 
 const Order: React.FC = () => {
