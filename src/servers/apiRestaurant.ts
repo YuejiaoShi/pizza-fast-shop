@@ -1,12 +1,12 @@
 const API_URL = "https://react-fast-pizza-api.onrender.com/api";
 
-export interface MenuItem {
-  id: string;
+export interface Pizza {
+  id: number;
   name: string;
-  description: string;
-  price: number;
-  category: string;
-  imageUrl?: string;
+  unitPrice: number;
+  ingredients: string[];
+  soldOut: boolean;
+  imageUrl: string;
 }
 
 interface Order {
@@ -35,16 +35,15 @@ interface UpdateOrderRequest {
   status?: string;
 }
 
-
-export async function getMenu(): Promise<MenuItem[]> {
+export async function getMenu(): Promise<Pizza[]> {
   const res = await fetch(`${API_URL}/menu`);
 
-  // fetch won't throw error on 400 errors (e.g. when URL is wrong), 
-  // so we need to do it manually. 
+  // fetch won't throw error on 400 errors (e.g. when URL is wrong),
+  // so we need to do it manually.
   // This will then go into the catch block, where the message is set
   if (!res.ok) throw Error("Failed getting menu");
 
-  const { data }: { data: MenuItem[] } = await res.json();
+  const { data }: { data: Pizza[] } = await res.json();
   return data;
 }
 
