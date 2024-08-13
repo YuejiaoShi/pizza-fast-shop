@@ -1,11 +1,7 @@
 import React from "react";
 
-interface LoaderProps {
-  // define props here
-}
-
-const Loader: React.FC<LoaderProps> = ({}) => {
-  return <div className="loader">// component content</div>;
+const Loader: React.FC = () => {
+  return <div className="loader"></div>;
 };
 
 export default Loader;
