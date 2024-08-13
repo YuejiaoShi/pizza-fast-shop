@@ -5,7 +5,6 @@ import MenuItem from "./MenuItem";
 
 const Menu: React.FC = () => {
   const menu = useLoaderData() as Pizza[];
-  console.log(menu);
   return (
     <ul>
       {menu.map((pizza) => (

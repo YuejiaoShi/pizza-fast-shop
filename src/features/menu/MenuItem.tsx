@@ -1,14 +1,6 @@
 import React from "react";
 import { formatCurrency } from "../../utilities/helpers";
-
-export type Pizza = {
-  id: number;
-  name: string;
-  unitPrice: number;
-  ingredients: string[];
-  soldOut: boolean;
-  imageUrl: string;
-};
+import { Pizza } from "../../servers/apiRestaurant";
 
 export type MenuItemProps = {
   pizza: Pizza;

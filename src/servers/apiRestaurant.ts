@@ -43,7 +43,7 @@ export async function getMenu(): Promise<Pizza[]> {
   // This will then go into the catch block, where the message is set
   if (!res.ok) throw Error("Failed getting menu");
 
-  const { data }: { data: Pizza[] } = await res.json();
+  const { data }: { data: Pizza [] } = await res.json();
   return data;
 }
 
