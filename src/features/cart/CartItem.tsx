@@ -1,3 +1,5 @@
+import { formatCurrency } from "../../utilities/helpers";
+
 type CartItemProps = {
   item: {
     pizzaId: number;
@@ -5,10 +7,6 @@ type CartItemProps = {
     quantity: number;
     totalPrice: number;
   };
-};
-
-const formatCurrency = (amount: number): string => {
-  return `$${amount.toFixed(2)}`;
 };
 
 const CartItem: React.FC<CartItemProps> = ({ item }) => {
