@@ -1,7 +1,7 @@
 import React from "react";
 import { formatCurrency } from "../../utilities/helpers";
 
-type Pizza = {
+export type Pizza = {
   id: number;
   name: string;
   unitPrice: number;
@@ -10,7 +10,7 @@ type Pizza = {
   imageUrl: string;
 };
 
-type MenuItemProps = {
+export type MenuItemProps = {
   pizza: Pizza;
 };
 

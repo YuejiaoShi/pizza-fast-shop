@@ -1,7 +1,7 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./UI/Home";
-import Menu from "./features/menu/Menu";
+import Menu, { loader as MenuLoader } from "./features/menu/Menu";
 import Cart from "./features/cart/Cart";
 import CreateOrder from "./features/order/CreateOrder";
 import Order from "./features/order/Order";
@@ -18,6 +18,7 @@ const router = createBrowserRouter([
       {
         path: "/menu",
         element: <Menu />,
+        loader: MenuLoader,
       },
       {
         path: "/cart",

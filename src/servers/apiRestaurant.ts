@@ -1,6 +1,6 @@
 const API_URL = "https://react-fast-pizza-api.onrender.com/api";
 
-interface MenuItem {
+export interface MenuItem {
   id: string;
   name: string;
   description: string;
