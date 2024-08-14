@@ -79,6 +79,7 @@ const CreateOrder: React.FC = () => {
         </div>
 
         <div>
+          <input type="hidden" name="cart" value={JSON.stringify(cart)}></input>
           <button>Order now</button>
         </div>
       </Form>
@@ -89,9 +90,12 @@ const CreateOrder: React.FC = () => {
 export async function action({ request }: { request: Request }): Promise<void> {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
-
-  console.log(data);
-  return null;
+  const order = {
+    ...data,
+    cart: JSON.parse(data.cart as string),
+    priority: data.priority === "on",
+  };
+  console.log(order);
 }
 
 export default CreateOrder;
