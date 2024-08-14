@@ -86,4 +86,10 @@ const CreateOrder: React.FC = () => {
   );
 };
 
+export async function action({ request }: { request: Request }): Promise<void> {
+  const formData = await request.formData();
+  console.log(formData);
+  return null;
+}
+
 export default CreateOrder;
