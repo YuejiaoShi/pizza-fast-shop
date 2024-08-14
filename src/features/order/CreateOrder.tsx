@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { Form } from "react-router-dom";
+import { Form, redirect } from "react-router-dom";
+import {
+  createOrder,
+  CreateOrderRequest,
+  OrderType,
+} from "../../servers/apiRestaurant";
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str: string): boolean =>
@@ -87,15 +92,33 @@ const CreateOrder: React.FC = () => {
   );
 };
 
-export async function action({ request }: { request: Request }): Promise<void> {
-  const formData = await request.formData();
-  const data = Object.fromEntries(formData);
-  const order = {
-    ...data,
-    cart: JSON.parse(data.cart as string),
-    priority: data.priority === "on",
-  };
-  console.log(order);
+export async function action({
+  request,
+}: {
+  request: Request;
+}): Promise<Response> {
+  try {
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
+    const order: CreateOrderRequest = {
+      ...data,
+      cart: JSON.parse(data.cart as string),
+      priority: data.priority === "on",
+    } as CreateOrderRequest;
+
+    const newOrder: OrderType = await createOrder(order);
+    console.log(order);
+
+    if (newOrder.id) {
+      return redirect(`/order/${newOrder.id}`);
+    } else {
+      console.error("Order ID is undefined.");
+      return redirect("/error");
+    }
+  } catch (error) {
+    console.error("Error in createOrderAction:", error);
+    return redirect("/error");
+  }
 }
 
 export default CreateOrder;

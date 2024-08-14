@@ -20,13 +20,23 @@ export interface OrderType {
   status: string;
 }
 
-interface CreateOrderRequest {
-  items: {
-    id: string;
-    quantity: number;
-  }[];
+export interface OrderType {
+  id: string;
+  priority: boolean;
+  estimatedDelivery: string;
+  cart: CartItem[];
+  orderPrice: number;
+  priorityPrice: number;
+  status: string;
 }
-
+export interface CreateOrderRequest {
+  id: string;
+  priority: boolean;
+  customer: string;
+  cart: CartItem[];
+  phone: string;
+  address: string;
+}
 interface UpdateOrderRequest {
   items?: {
     id: string;
