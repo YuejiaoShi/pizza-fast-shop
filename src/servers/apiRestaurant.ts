@@ -20,15 +20,6 @@ export interface OrderType {
   status: string;
 }
 
-export interface OrderType {
-  id: string;
-  priority: boolean;
-  estimatedDelivery: string;
-  cart: CartItem[];
-  orderPrice: number;
-  priorityPrice: number;
-  status: string;
-}
 export interface CreateOrderRequest {
   id: string;
   priority: boolean;
