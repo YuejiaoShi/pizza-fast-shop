@@ -9,7 +9,7 @@ const CreateUser: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <p>👋 Welcome! Please start by telling us your name:</p>
+      <p className="mb-4 text-sm text-stone-600 md:text-base">👋 Welcome! Please start by telling us your name:</p>
 
       <input
         type="text"
@@ -18,6 +18,7 @@ const CreateUser: React.FC = () => {
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           setUsername(e.target.value)
         }
+        className="w-72"
       />
 
       {username !== "" && (
