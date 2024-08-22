@@ -1,9 +1,7 @@
 import React, { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-interface SearchOrderProps {}
-
-const SearchOrder: React.FC<SearchOrderProps> = () => {
+const SearchOrder: React.FC = () => {
   const [query, setQuery] = useState<string>("");
   const navigate = useNavigate();
 

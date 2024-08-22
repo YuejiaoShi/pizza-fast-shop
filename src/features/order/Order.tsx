@@ -94,9 +94,19 @@ const Order: React.FC = () => {
 export const loader = async ({
   params,
 }: LoaderFunctionArgs): Promise<OrderType> => {
-  const orderId = params.orderId as string;
-  const order: OrderType = await getOrder(orderId);
-  return order;
+  console.log("Params:", params);
+  if (!params.orderID) {
+    throw new Error("Order ID is missing");
+  }
+  console.log("Params:", params);
+  const orderID = params.orderID as string;
+  try {
+    const order = await getOrder(orderID);
+    return order;
+  } catch (error) {
+    console.error("Failed to fetch order:", error);
+    throw new Error(`Failed to fetch order ${orderID}`);
+  }
 };
 
 export default Order;
