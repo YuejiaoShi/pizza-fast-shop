@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const CartOverview: React.FC = () => {
   return (
     <div className="bg-stone-800 text-stone-200">
-      <p className="text-stone-300">
+      <p className="text-stone-300 font-semibold ">
         <span>23 pizzas</span>
         <span>$23.45</span>
       </p>
