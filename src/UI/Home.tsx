@@ -3,7 +3,7 @@ import React from "react";
 const Home: React.FC = () => {
   return (
     <div>
-      <h1>
+      <h1 className="text-xl text-yellow-500 font-semibold text-center">
         The best pizza.
         <br />
         Straight out of the oven, straight to you.
