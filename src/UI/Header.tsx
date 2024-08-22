@@ -6,7 +6,7 @@ import UserName from "../features/user/userName";
 
 const Header: React.FC = () => {
   return (
-    <header className="bg-amber-500 uppercase">
+    <header className="bg-amber-500 uppercase px-4 py-3">
       <Link to="/" className="tracking-widest">
         Pizza Fast Denmark A/S
       </Link>
