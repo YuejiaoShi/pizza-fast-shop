@@ -94,11 +94,9 @@ const Order: React.FC = () => {
 export const loader = async ({
   params,
 }: LoaderFunctionArgs): Promise<OrderType> => {
-  console.log("Params:", params);
   if (!params.orderID) {
     throw new Error("Order ID is missing");
   }
-  console.log("Params:", params);
   const orderID = params.orderID as string;
   try {
     const order = await getOrder(orderID);
