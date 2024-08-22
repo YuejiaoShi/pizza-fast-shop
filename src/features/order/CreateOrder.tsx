@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, redirect, useNavigation } from "react-router-dom";
+import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import {
   createOrder,
   CreateOrderRequest,
@@ -18,6 +18,10 @@ type CartItem = {
   quantity: number;
   unitPrice: number;
   totalPrice: number;
+};
+
+type FormErrors = {
+  phone?: string;
 };
 
 const fakeCart: CartItem[] = [
@@ -47,6 +51,8 @@ const fakeCart: CartItem[] = [
 const CreateOrder: React.FC = () => {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
+
+  const formErrors = useActionData() as FormErrors;
   // const [withPriority, setWithPriority] = useState<boolean>(false);
   const cart = fakeCart;
 
@@ -65,6 +71,7 @@ const CreateOrder: React.FC = () => {
           <div>
             <input type="tel" name="phone" required />
           </div>
+          {formErrors?.phone && <p>{formErrors.phone}</p>}
         </div>
 
         <div>
@@ -104,15 +111,27 @@ export async function action({
   try {
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
-    const order: CreateOrderRequest = {
+    const order = {
       ...data,
       cart: JSON.parse(data.cart as string),
       priority: data.priority === "on",
     } as CreateOrderRequest;
-
-    const newOrder: OrderType = await createOrder(order);
     console.log(order);
 
+    const errors: FormErrors = {};
+    if (!isValidPhone(order.phone))
+      errors.phone = "Please provide a valid phone number.";
+
+    if (Object.keys(errors).length > 0) {
+      return new Response(JSON.stringify(errors), {
+        status: 400,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    }
+
+    const newOrder: OrderType = await createOrder(order);
     if (newOrder.id) {
       return redirect(`/order/${newOrder.id}`);
     } else {
