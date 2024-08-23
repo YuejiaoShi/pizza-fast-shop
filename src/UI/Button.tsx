@@ -9,7 +9,7 @@ interface ButtonProps {
 }
 
 const base =
-  "bg-amber-500 text-stone-800 font-semibold uppercase tracking-wide rounded-full hover:bg-amber-300 transition-colors duration-300 focus:outline-none focus:ring focus:ring-amber-300 focus:bg-amber-300 focus:ring-offset-2 disabled:cursor-not-allowed";
+  "inline-block text-sm rounded-full bg-amber-400 font-semibold uppercase tracking-wide text-stone-800 transition-colors duration-300 hover:bg-amber-300 focus:bg-amber-300 focus:outline-none focus:ring focus:ring-amber-300 focus:ring-offset-2 disabled:cursor-not-allowed";
 
 const styles = {
   small: `${base} py-2 px-4 sm:px-6 sm:py-2.5 text-xs`,
