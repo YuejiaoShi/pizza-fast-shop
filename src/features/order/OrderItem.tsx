@@ -1,5 +1,5 @@
-import React from "react";
 import { formatCurrency } from "../../utilities/helpers";
+import React from "react";
 
 type OrderItemProps = {
   item: {
@@ -7,8 +7,8 @@ type OrderItemProps = {
     name: string;
     totalPrice: number;
   };
-  isLoadingIngredients: boolean;
-  ingredients: string[];
+  isLoadingIngredients?: boolean;
+  ingredients?: string[];
 };
 
 const OrderItem: React.FC<OrderItemProps> = ({
