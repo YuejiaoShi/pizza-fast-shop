@@ -1,5 +1,6 @@
+import { useRouteError } from "react-router-dom";
+import LinkAnchor from "./LinkAnchor";
 import React from "react";
-import { useNavigate, useRouteError } from "react-router-dom";
 
 interface ErrorResponseImpl {
   data?: string;
@@ -7,14 +8,13 @@ interface ErrorResponseImpl {
 }
 
 const Error: React.FC = () => {
-  const navigate = useNavigate();
   const error = useRouteError() as ErrorResponseImpl;
 
   return (
     <div>
       <h1>Something went wrong 😢</h1>
       <p>{error.data || error.message}</p>
-      <button onClick={() => navigate(-1)}>&larr; Go back</button>
+      <LinkAnchor to="-1">&larr; Go back</LinkAnchor>
     </div>
   );
 };
