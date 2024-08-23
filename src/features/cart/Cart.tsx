@@ -1,5 +1,6 @@
-import React from "react";
+import LinkAnchor from "../../UI/LinkAnchor";
 import { Link } from "react-router-dom";
+import React from "react";
 
 export type CartItem = {
   pizzaId: number;
@@ -42,7 +43,7 @@ const Cart: React.FC<CartProps> = ({ items }) => {
 
   return (
     <div>
-      <Link to="/menu" className="text-sm text-blue-400 hover:text-blue-600 hover:underline">&larr; Back to menu</Link>
+      <LinkAnchor to="/menu">&larr; Back to menu</LinkAnchor>
 
       <h2>Your cart, %NAME%</h2>
 
