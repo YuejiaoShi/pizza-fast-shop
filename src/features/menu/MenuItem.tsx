@@ -30,7 +30,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ pizza }) => {
               Sold out
             </p>
           )}
-          <Button>Add to Cart</Button>
+          <Button type="small">Add to Cart</Button>
         </div>
       </div>
     </li>

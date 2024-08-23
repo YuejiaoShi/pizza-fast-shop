@@ -26,7 +26,7 @@ const CreateUser: React.FC = () => {
 
       {username !== "" && (
         <div>
-          <Button>Start ordering</Button>
+          <Button type="primary">Start ordering</Button>
         </div>
       )}
     </form>
