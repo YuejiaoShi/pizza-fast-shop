@@ -5,6 +5,13 @@ export default {
     fontFamily: {
       sans: "Roboto Mono, monospace",
     },
+    extend: {
+      height: {
+        screen: "100dvh",
+      },
+    },
   },
   plugins: [],
 };
+
+// Tailwind’s default configurations: https://github.com/tailwindlabs/tailwindcss/blob/main/stubs/config.full.js
