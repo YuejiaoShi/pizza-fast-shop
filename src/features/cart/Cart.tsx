@@ -35,11 +35,7 @@ const fakeCart: CartItem[] = [
   },
 ];
 
-type CartProps = {
-  items: CartItem[];
-};
-
-const Cart: React.FC<CartProps> = ({ items }) => {
+const Cart: React.FC = () => {
   const cart: CartItem[] = fakeCart;
 
   return (
@@ -50,7 +46,7 @@ const Cart: React.FC<CartProps> = ({ items }) => {
 
       <ul className="divide-y divide-stone-200 border-b mt-3">
         {cart.map((item) => (
-          <CartItem item={item} key={items.key} />
+          <CartItem item={item} key={item.pizzaId} />
         ))}
       </ul>
 
@@ -58,7 +54,8 @@ const Cart: React.FC<CartProps> = ({ items }) => {
         <Button to="/order/new" type="primary">
           Order pizzas
         </Button>
-        <button>Clear cart</button>
+
+        <Button type="secondary">Clear Cart</Button>
       </div>
     </div>
   );
