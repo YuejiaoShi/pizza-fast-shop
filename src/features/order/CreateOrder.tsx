@@ -87,7 +87,7 @@ const CreateOrder: React.FC = () => {
           </div>
         </div>
 
-        <div>
+        <div className="mb-12 flex items-center gap-5">
           <input
             className="h-6 w-6 accent-amber-400 focus:outline-none focus:ring focus:ring-amber-500 focus:ring-offset-2"
             type="checkbox"
@@ -96,7 +96,9 @@ const CreateOrder: React.FC = () => {
             // value={withPriority}
             // onChange={(e) => setWithPriority(e.target.checked)}
           />
-          <label htmlFor="priority">Want to yo give your order priority?</label>
+          <label htmlFor="priority" className="font-medium">
+            Want to yo give your order priority?
+          </label>
         </div>
 
         <div>
