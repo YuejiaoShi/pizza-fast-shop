@@ -1,5 +1,6 @@
 import { formatCurrency } from "../../utilities/helpers";
 import { PizzaType } from "../../servers/apiRestaurant";
+import Button from "../../UI/Button";
 import React from "react";
 
 export type MenuItemProps = {
@@ -16,12 +17,12 @@ const MenuItem: React.FC<MenuItemProps> = ({ pizza }) => {
         alt={name}
         className={`h-24 ${soldOut ? "opacity-70 grayscale" : ""}`}
       />
-      <div className="flex flex-col">
+      <div className="flex flex-col grow">
         <p className="font-medium">{name}</p>
         <p className="text-sm italic text-stone-500">
           {ingredients.join(", ")}
         </p>
-        <div className="mt-auto">
+        <div className="mt-auto flex items-center justify-between">
           {!soldOut ? (
             <p className="text-sm">{formatCurrency(unitPrice)}</p>
           ) : (
@@ -29,6 +30,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ pizza }) => {
               Sold out
             </p>
           )}
+          <Button>Add to Cart</Button>
         </div>
       </div>
     </li>
