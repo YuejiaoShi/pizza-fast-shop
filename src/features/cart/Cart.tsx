@@ -1,5 +1,5 @@
 import LinkAnchor from "../../UI/LinkAnchor";
-import { Link } from "react-router-dom";
+import Button from "../../UI/Button";
 import React from "react";
 
 export type CartItem = {
@@ -48,7 +48,7 @@ const Cart: React.FC<CartProps> = ({ items }) => {
       <h2>Your cart, %NAME%</h2>
 
       <div>
-        <Link to="/order/new">Order pizzas</Link>
+        <Button to="/order/new">Order pizzas</Button>
         <button>Clear cart</button>
       </div>
     </div>
