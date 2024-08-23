@@ -1,4 +1,5 @@
 import { formatCurrency } from "../../utilities/helpers";
+import Button from "../../UI/Button";
 
 type CartItemProps = {
   item: {
@@ -13,12 +14,13 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
   const { pizzaId, name, quantity, totalPrice } = item;
 
   return (
-    <li>
+    <li className="py-3">
       <p>
         {quantity}&times; {name}
       </p>
-      <div>
-        <p>{formatCurrency(totalPrice)}</p>
+      <div className="flex items-center justify-between">
+        <p className="text-sm font-bold">{formatCurrency(totalPrice)}</p>
+        <Button type="small">Delete</Button>
       </div>
     </li>
   );
