@@ -17,7 +17,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ pizza }) => {
         alt={name}
         className={`h-24 ${soldOut ? "opacity-70 grayscale" : ""}`}
       />
-      <div className="flex flex-col grow">
+      <div className="flex flex-col grow pt-0.5">
         <p className="font-medium">{name}</p>
         <p className="text-sm italic text-stone-500">
           {ingredients.join(", ")}
