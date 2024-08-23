@@ -71,7 +71,11 @@ const CreateOrder: React.FC = () => {
           <label className="sm:basis-40">Phone number</label>
           <div className="grow">
             <input type="tel" name="phone" required className="input w-full" />
-            {formErrors?.phone && <p>{formErrors.phone}</p>}
+            {formErrors?.phone && (
+              <p className="text-xs mt-2 text-red-700 p-2 rounded-md bg-red-100">
+                {formErrors.phone}
+              </p>
+            )}
           </div>
         </div>
 
