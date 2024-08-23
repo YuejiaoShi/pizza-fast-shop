@@ -1,11 +1,11 @@
 import React from "react";
 
-interface Props {
+interface ButtonProps {
   children: React.ReactNode;
   disabled?: boolean;
 }
 
-const Button: React.FC<Props> = ({ children, disabled = false }) => {
+const Button: React.FC<ButtonProps> = ({ children, disabled = false }) => {
   return (
     <button
       disabled={disabled}
