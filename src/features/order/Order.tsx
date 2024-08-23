@@ -1,11 +1,11 @@
 // Test ID: IIDSAT
 
-import React from "react";
 import {
   calcMinutesLeft,
   formatCurrency,
   formatDate,
 } from "../../utilities/helpers";
+import React from "react";
 
 import { getOrder, type OrderType } from "../../servers/apiRestaurant";
 import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
@@ -26,23 +26,31 @@ const Order: React.FC = () => {
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
 
   return (
-    <div>
-      <div>
-        <h2>Status</h2>
+    <div className="px-4 py-6 space-y-8">
+      <div className="flex items-center justify-between flex-wrap gap-2">
+        <h2 className="text-cl font-semibold">Order #{id} Status</h2>
 
-        <div>
-          {priority && <span>Priority</span>}
-          <span>{status} order</span>
+        <div className="space-x-2">
+          {priority && (
+            <span className="bg-red-500 rounded-full py-1 px-3 text-sm uppercase font-semibold text-red-50 tracking-wide">
+              Priority
+            </span>
+          )}
+          <span className="bg-green-500 rounded-full py-1 px-3 text-sm uppercase font-semibold text-green-50 tracking-wide">
+            {status} order
+          </span>
         </div>
       </div>
 
-      <div>
-        <p>
+      <div className="flex items-center justify-between flex-wrap gap-2 bg-stone-200 px-6 py-5 ">
+        <p className="font-medium">
           {deliveryIn >= 0
             ? `Only ${calcMinutesLeft(estimatedDelivery)} minutes left 😃`
             : "Order should have arrived"}
         </p>
-        <p>(Estimated delivery: {formatDate(estimatedDelivery)})</p>
+        <p className="text-xs text-stone-500">
+          (Estimated delivery: {formatDate(estimatedDelivery)})
+        </p>
       </div>
 
       <div>
