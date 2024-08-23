@@ -1,8 +1,10 @@
 export default {
-  semi: false,
+  printWidth: 80,
+  tabWidth: 2,
   singleQuote: true,
-  trailingComma: "all",
-  pluginSearchDirs: false,
-  plugins: ["prettier-plugin-sort-imports"],
-  importOrder: ["^@", "^[a-zA-Z0-9-]+", "^[./]"],
+  trailingComma: 'all',
+  semi: true,
+  bracketSpacing: true,
+  jsxBracketSameLine: false,
+  plugins: ['prettier-plugin-sort-imports'],
 };
