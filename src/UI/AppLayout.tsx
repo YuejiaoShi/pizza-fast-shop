@@ -11,11 +11,13 @@ const AppLayout: React.FC = () => {
 
   return (
     <div className="grid h-screen grid-rows-[auto_1fr_auto]">
-        {isLoading && <Loader/>}
+      {isLoading && <Loader />}
       <Header />
-      <main className="overflow-scroll">
-        <Outlet />
-      </main>
+      <div className="overflow-scroll">
+        <main className="max-w-3xl mx-auto">
+          <Outlet />
+        </main>
+      </div>
       <CartOverview />
     </div>
   );
