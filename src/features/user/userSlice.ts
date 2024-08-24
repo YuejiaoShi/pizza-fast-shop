@@ -1,14 +1,5 @@
-type Position = {
-  latitude: number;
-  longitude: number;
-};
+import { getAddress, type Position } from "../../servers/apiGeocoding";
 
-type Address = {
-  locality?: string;
-  city?: string;
-  postcode?: string;
-  countryName?: string;
-};
 
 // Define the type for the position object returned by geolocation API
 type GeolocationPosition = {
@@ -29,7 +20,6 @@ export async function fetchAddress(): Promise<{
   address: string;
 }> {
   // 1) Get the user's geolocation position
-  // 1) We get the user's geolocation position
   const positionObj = await getPosition();
   const position = {
     latitude: positionObj.coords.latitude,
