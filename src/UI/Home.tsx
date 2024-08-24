@@ -2,6 +2,7 @@ import React from "react";
 import CreateUser from "../features/user/CreateUser";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
+import Button from "./Button";
 
 const Home: React.FC = () => {
   const username = useSelector((state: RootState) => state.user.username);
@@ -15,7 +16,21 @@ const Home: React.FC = () => {
           Straight out of the oven, straight to you.
         </span>
       </h1>
-      <CreateUser />
+      {username === "" ? (
+        <CreateUser />
+      ) : (
+        <div>
+          <p className="mb-4">
+            Hi{" "}
+            <span className="text-sm text-stone-600 md:text-base uppercase">
+              {username}
+            </span>
+          </p>
+          <Button to="/menu" type="primary">
+            Continue your order
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
