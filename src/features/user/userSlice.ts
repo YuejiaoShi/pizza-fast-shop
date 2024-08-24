@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // import { getAddress, type Position } from "../../servers/apiGeocoding";
 
-
 // // Define the type for the position object returned by geolocation API
 // type GeolocationPosition = {
 //   coords: {
@@ -36,10 +35,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // }
 
 type initialStateType = {
-  username: string
-}
+  username: string;
+};
 
-const initialState: initialStateType = { username: 'YYY' };
+const initialState: initialStateType = { username: "" };
 
 const userSlice = createSlice({
   name: "user",
@@ -47,9 +46,9 @@ const userSlice = createSlice({
   reducers: {
     updateName(state, action: PayloadAction<string>) {
       state.username = action.payload;
-    }
-  }
-})
+    },
+  },
+});
 
 export const { updateName } = userSlice.actions;
 export default userSlice.reducer;

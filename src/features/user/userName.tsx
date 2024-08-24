@@ -4,6 +4,8 @@ import { RootState } from "../../store";
 const UserName = () => {
   const username = useSelector((state: RootState) => state.user.username);
 
+  if (!username) return null;
+
   return (
     <div className="text-sm font-semibold hidden md:block">{username}</div>
   );
