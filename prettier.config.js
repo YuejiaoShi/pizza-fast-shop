@@ -1,3 +1,3 @@
 export default {
-  plugins: ['prettier-plugin-sort-imports'],
+  plugins: ["prettier-plugin-sort-imports"],
 };
