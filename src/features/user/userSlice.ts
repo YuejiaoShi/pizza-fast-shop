@@ -39,7 +39,7 @@ type initialStateType = {
   username: string
 }
 
-const initialState: initialStateType = { username: '' };
+const initialState: initialStateType = { username: 'YYY' };
 
 const userSlice = createSlice({
   name: "user",
