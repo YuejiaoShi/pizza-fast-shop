@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import Button from "../../UI/Button";
+import { useDispatch } from "react-redux";
+import { updateName } from "./userSlice";
 
 const CreateUser: React.FC = () => {
   const [username, setUsername] = useState<string>("");
+  const dispatch = useDispatch();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    if (!username) return;
+    dispatch(updateName(username));
   }
 
   return (
