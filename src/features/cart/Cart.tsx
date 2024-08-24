@@ -2,6 +2,8 @@ import LinkAnchor from "../../UI/LinkAnchor";
 import Button from "../../UI/Button";
 import CartItem from "./CartItem";
 import React from "react";
+import { RootState } from "../../store";
+import { useSelector } from "react-redux";
 
 export type CartItem = {
   pizzaId: number;
@@ -37,12 +39,13 @@ const fakeCart: CartItem[] = [
 
 const Cart: React.FC = () => {
   const cart: CartItem[] = fakeCart;
+  const username = useSelector((state: RootState) => state.user.username);
 
   return (
     <div className="py-4 px-3">
       <LinkAnchor to="/menu">&larr; Back to menu</LinkAnchor>
 
-      <h2 className="mt-7 text-xl font-semibold">Your cart, %NAME%</h2>
+      <h2 className="mt-7 text-xl font-semibold">Your cart, {username}</h2>
 
       <ul className="divide-y divide-stone-200 border-b mt-3">
         {cart.map((item) => (
