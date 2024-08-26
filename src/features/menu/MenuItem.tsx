@@ -1,5 +1,7 @@
 import { formatCurrency } from "../../utilities/helpers";
 import { PizzaType } from "../../servers/apiRestaurant";
+import { addItem } from "../cart/cartSlice";
+import { useDispatch } from "react-redux";
 import Button from "../../UI/Button";
 import React from "react";
 
@@ -7,10 +9,21 @@ export type MenuItemProps = {
   pizza: PizzaType;
 };
 
-function handleAddToCart() {}
-
 const MenuItem: React.FC<MenuItemProps> = ({ pizza }) => {
+  const dispatch = useDispatch();
+
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
+
+  function handleAddToCart() {
+    const newPizza = {
+      pizzaId: id,
+      name: name,
+      quantity: 1,
+      unitPrice: unitPrice,
+      totalPrice: unitPrice * 1,
+    };
+    dispatch(addItem(newPizza));
+  }
 
   return (
     <li className="flex gap-4 py-2">
