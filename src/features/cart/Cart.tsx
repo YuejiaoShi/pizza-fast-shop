@@ -1,7 +1,7 @@
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart, getCart } from "./cartSlice";
 import LinkAnchor from "../../UI/LinkAnchor";
-import { useSelector } from "react-redux";
 import { RootState } from "../../store";
-import { getCart } from "./cartSlice";
 import Button from "../../UI/Button";
 import CartItem from "./CartItem";
 import React from "react";
@@ -17,6 +17,11 @@ export type CartItem = {
 const Cart: React.FC = () => {
   const cart: CartItem[] = useSelector(getCart);
   const username = useSelector((state: RootState) => state.user.username);
+  const dispatch = useDispatch();
+
+  function handleClearCart() {
+    dispatch(clearCart());
+  }
 
   return (
     <div className="py-4 px-3">
@@ -35,7 +40,9 @@ const Cart: React.FC = () => {
           Order pizzas
         </Button>
 
-        <Button type="secondary">Clear Cart</Button>
+        <Button type="secondary" onClick={handleClearCart}>
+          Clear Cart
+        </Button>
       </div>
     </div>
   );
