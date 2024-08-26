@@ -1,6 +1,5 @@
 import { formatCurrency } from "../../utilities/helpers";
 import DeleteItem from "./DeleteItem";
-import Button from "../../UI/Button";
 
 type CartItemProps = {
   item: {
