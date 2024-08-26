@@ -7,15 +7,7 @@ type initialStateType = {
 };
 
 const initialState: initialStateType = {
-  cart: [
-    {
-      pizzaId: 12,
-      name: "hhhhh",
-      quantity: 2,
-      unitPrice: 16,
-      totalPrice: 32,
-    },
-  ],
+  cart: [],
 };
 
 const cartSlice = createSlice({
