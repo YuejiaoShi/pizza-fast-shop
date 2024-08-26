@@ -3,6 +3,7 @@ import { clearCart, getCart } from "./cartSlice";
 import LinkAnchor from "../../UI/LinkAnchor";
 import { RootState } from "../../store";
 import Button from "../../UI/Button";
+import EmptyCart from "./EmptyCart";
 import CartItem from "./CartItem";
 import React from "react";
 
@@ -23,6 +24,7 @@ const Cart: React.FC = () => {
     dispatch(clearCart());
   }
 
+  if (!cart.length) return <EmptyCart />;
   return (
     <div className="py-4 px-3">
       <LinkAnchor to="/menu">&larr; Back to menu</LinkAnchor>
