@@ -1,4 +1,4 @@
-import { decreaseItemQuantity } from "./cartSlice";
+import { decreaseItemQuantity, increaseItemQuantity } from "./cartSlice";
 import { useDispatch } from "react-redux";
 import Button from "../../UI/Button";
 import React from "react";
@@ -10,16 +10,22 @@ interface UpdateItemQuantityProps {
 const UpdateItemQuantity: React.FC<UpdateItemQuantityProps> = ({ pizzaId }) => {
   const dispatch = useDispatch();
 
-  function handleMinus() {
+  function handleDecrease() {
     dispatch(decreaseItemQuantity(pizzaId));
+  }
+
+  function handleIncrease() {
+    dispatch(increaseItemQuantity(pizzaId));
   }
 
   return (
     <div className="flex gap-1 items-center md:gap-3">
-      <Button type="round" onClick={handleMinus}>
+      <Button type="round" onClick={handleDecrease}>
         -
       </Button>
-      <Button type="round">+</Button>
+      <Button type="round" onClick={handleIncrease}>
+        +
+      </Button>
     </div>
   );
 };
