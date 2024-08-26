@@ -1,4 +1,5 @@
 import { addItem, getCurrentQuantityById } from "../cart/cartSlice";
+import UpdateItemQuantity from "../cart/UpdateItemQuantity";
 import { formatCurrency } from "../../utilities/helpers";
 import { PizzaType } from "../../servers/apiRestaurant";
 import { useDispatch, useSelector } from "react-redux";
@@ -49,7 +50,16 @@ const MenuItem: React.FC<MenuItemProps> = ({ pizza }) => {
             </p>
           )}
 
-          {currentQuantity > 0 && <DeleteItem pizzaId={id} />}
+          {currentQuantity > 0 && (
+            <div>
+              {" "}
+              <UpdateItemQuantity
+                pizzaId={id}
+                currentQuantity={currentQuantity}
+              />{" "}
+              <DeleteItem pizzaId={id} />{" "}
+            </div>
+          )}
 
           {!soldOut && currentQuantity === 0 && (
             <Button type="small" onClick={handleAddToCart}>
