@@ -1,12 +1,14 @@
+import LinkAnchor from "../../UI/LinkAnchor";
 import React from "react";
-import { Link } from "react-router-dom";
 
 const EmptyCart: React.FC = () => {
   return (
-    <div>
-      <Link to="/menu">&larr; Back to menu</Link>
+    <div className="py-3 px-4">
+      <LinkAnchor to="/menu">&larr; Back to menu</LinkAnchor>
 
-      <p>Your cart is still empty. Start adding some pizzas :)</p>
+      <p className="font-semibold mt-6">
+        Your cart is still empty. Start adding some pizzas :)
+      </p>
     </div>
   );
 };
