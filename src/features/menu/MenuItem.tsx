@@ -1,7 +1,8 @@
+import { addItem, getCurrentQuantityById } from "../cart/cartSlice";
 import { formatCurrency } from "../../utilities/helpers";
 import { PizzaType } from "../../servers/apiRestaurant";
-import { addItem } from "../cart/cartSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import DeleteItem from "../cart/DeleteItem";
 import Button from "../../UI/Button";
 import React from "react";
 
@@ -13,6 +14,8 @@ const MenuItem: React.FC<MenuItemProps> = ({ pizza }) => {
   const dispatch = useDispatch();
 
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
+
+  const currentQuantity = useSelector(getCurrentQuantityById(id));
 
   function handleAddToCart() {
     const newPizza = {
@@ -45,6 +48,9 @@ const MenuItem: React.FC<MenuItemProps> = ({ pizza }) => {
               Sold out
             </p>
           )}
+
+          <DeleteItem pizzaId={id} />
+
           {!soldOut && (
             <Button type="small" onClick={handleAddToCart}>
               Add to Cart
