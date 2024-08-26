@@ -27,7 +27,7 @@ const UpdateItemQuantity: React.FC<UpdateItemQuantityProps> = ({
       <Button type="round" onClick={handleDecrease}>
         -
       </Button>
-      {currentQuantity}
+      <span className="text-sm font-medium">{currentQuantity}</span>
       <Button type="round" onClick={handleIncrease}>
         +
       </Button>
