@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../../store";
 import { CartItem } from "./Cart";
 
 type initialStateType = {
@@ -62,3 +63,6 @@ export const {
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
+
+export const getTotalCartQuantity = (state: RootState) =>
+  state.cart.cart.reduce((sum, item) => sum + item.quantity, 0);

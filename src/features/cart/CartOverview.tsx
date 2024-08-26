@@ -1,12 +1,10 @@
+import { getTotalCartQuantity } from "./cartSlice";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { RootState } from "../../store";
 import React from "react";
 
 const CartOverview: React.FC = () => {
-  const totalCartQuantity = useSelector((state: RootState) =>
-    state.cart.cart.reduce((sum, item) => sum + item.quantity, 0),
-  );
+  const totalCartQuantity = useSelector(getTotalCartQuantity);
 
   return (
     <div className="bg-stone-800 text-stone-200 uppercase p-4 text-sm md:text-base sm:px-6 flex items-center justify-between">
