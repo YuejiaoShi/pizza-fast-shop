@@ -51,13 +51,12 @@ const MenuItem: React.FC<MenuItemProps> = ({ pizza }) => {
           )}
 
           {currentQuantity > 0 && (
-            <div>
-              {" "}
+            <div className="flex items-center gap-3 sm:gap-7">
               <UpdateItemQuantity
                 pizzaId={id}
                 currentQuantity={currentQuantity}
-              />{" "}
-              <DeleteItem pizzaId={id} />{" "}
+              />
+              <DeleteItem pizzaId={id} />
             </div>
           )}
 
