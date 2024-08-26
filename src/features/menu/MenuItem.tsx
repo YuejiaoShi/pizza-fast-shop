@@ -49,7 +49,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ pizza }) => {
             </p>
           )}
 
-          <DeleteItem pizzaId={id} />
+          {currentQuantity > 0 && <DeleteItem pizzaId={id} />}
 
           {!soldOut && (
             <Button type="small" onClick={handleAddToCart}>
