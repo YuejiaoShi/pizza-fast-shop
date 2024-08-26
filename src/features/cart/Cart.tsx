@@ -1,9 +1,10 @@
 import LinkAnchor from "../../UI/LinkAnchor";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+import { getCart } from "./cartSlice";
 import Button from "../../UI/Button";
 import CartItem from "./CartItem";
 import React from "react";
-import { RootState } from "../../store";
-import { useSelector } from "react-redux";
 
 export type CartItem = {
   pizzaId: number;
@@ -13,32 +14,8 @@ export type CartItem = {
   totalPrice: number;
 };
 
-const fakeCart: CartItem[] = [
-  {
-    pizzaId: 12,
-    name: "Mediterranean",
-    quantity: 2,
-    unitPrice: 16,
-    totalPrice: 32,
-  },
-  {
-    pizzaId: 6,
-    name: "Vegetable",
-    quantity: 1,
-    unitPrice: 13,
-    totalPrice: 13,
-  },
-  {
-    pizzaId: 11,
-    name: "Spinach and Mushroom",
-    quantity: 1,
-    unitPrice: 15,
-    totalPrice: 15,
-  },
-];
-
 const Cart: React.FC = () => {
-  const cart: CartItem[] = fakeCart;
+  const cart: CartItem[] = useSelector(getCart);
   const username = useSelector((state: RootState) => state.user.username);
 
   return (

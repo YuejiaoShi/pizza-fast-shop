@@ -61,3 +61,5 @@ export const getTotalCartQuantity = (state: RootState) =>
 
 export const getTotalCartPrice = (state: RootState) =>
   state.cart.cart.reduce((sum, item) => sum + item.totalPrice, 0);
+
+export const getCart = (state: RootState) => state.cart.cart;
