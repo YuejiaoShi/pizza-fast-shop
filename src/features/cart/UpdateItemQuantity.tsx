@@ -5,9 +5,13 @@ import React from "react";
 
 interface UpdateItemQuantityProps {
   pizzaId: number;
+  currentQuantity: number;
 }
 
-const UpdateItemQuantity: React.FC<UpdateItemQuantityProps> = ({ pizzaId }) => {
+const UpdateItemQuantity: React.FC<UpdateItemQuantityProps> = ({
+  pizzaId,
+  currentQuantity,
+}) => {
   const dispatch = useDispatch();
 
   function handleDecrease() {
@@ -23,6 +27,7 @@ const UpdateItemQuantity: React.FC<UpdateItemQuantityProps> = ({ pizzaId }) => {
       <Button type="round" onClick={handleDecrease}>
         -
       </Button>
+      {currentQuantity}
       <Button type="round" onClick={handleIncrease}>
         +
       </Button>
