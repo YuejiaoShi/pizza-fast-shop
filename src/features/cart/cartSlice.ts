@@ -47,7 +47,9 @@ const cartSlice = createSlice({
           itemToUpdate.unitPrice * itemToUpdate.quantity;
       }
     },
-    clearCart(state, action: PayloadAction<string>) {},
+    clearCart(state) {
+      state.cart = [];
+    },
   },
 });
 
