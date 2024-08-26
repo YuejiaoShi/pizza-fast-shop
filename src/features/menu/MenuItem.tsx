@@ -7,6 +7,8 @@ export type MenuItemProps = {
   pizza: PizzaType;
 };
 
+function handleAddToCart() {}
+
 const MenuItem: React.FC<MenuItemProps> = ({ pizza }) => {
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
 
@@ -30,7 +32,11 @@ const MenuItem: React.FC<MenuItemProps> = ({ pizza }) => {
               Sold out
             </p>
           )}
-          <Button type="small">Add to Cart</Button>
+          {!soldOut && (
+            <Button type="small" onClick={handleAddToCart}>
+              Add to Cart
+            </Button>
+          )}
         </div>
       </div>
     </li>

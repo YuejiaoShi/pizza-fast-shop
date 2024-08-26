@@ -6,6 +6,7 @@ interface ButtonProps {
   disabled?: boolean;
   to?: string;
   type: "small" | "primary" | "secondary";
+  onClick?: () => void;
 }
 
 const base =
@@ -23,6 +24,7 @@ const Button: React.FC<ButtonProps> = ({
   disabled = false,
   to,
   type,
+  onClick,
 }) => {
   if (to)
     return (
@@ -30,7 +32,13 @@ const Button: React.FC<ButtonProps> = ({
         {children}
       </Link>
     );
-
+  if (onClick) {
+    return (
+      <button onClick={onClick} disabled={disabled} className={styles[type]}>
+        {children}
+      </button>
+    );
+  }
   return (
     <button disabled={disabled} className={styles[type]}>
       {children}
