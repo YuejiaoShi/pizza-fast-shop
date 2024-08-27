@@ -4,7 +4,7 @@ import {
   OrderType,
 } from "../../servers/apiRestaurant";
 import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
-import { clearCart, getCart } from "../cart/cartSlice";
+import { clearCart, getCart, getTotalCartPrice } from "../cart/cartSlice";
 import store, { RootState } from "../../store";
 import EmptyCart from "../cart/EmptyCart";
 import { useSelector } from "react-redux";
@@ -30,6 +30,10 @@ const CreateOrder: React.FC = () => {
   const cart = useSelector(getCart);
 
   const username = useSelector((state: RootState) => state.user.username);
+
+  const priorityPrice = 0;
+  const totalCartPrice = useSelector(getTotalCartPrice);
+  const totalPrice = totalCartPrice + priorityPrice;
 
   if (!cart.length) return <EmptyCart />;
 
