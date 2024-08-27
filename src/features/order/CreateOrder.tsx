@@ -4,10 +4,10 @@ import {
   OrderType,
 } from "../../servers/apiRestaurant";
 import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
-import { getCart } from "../cart/cartSlice";
+import { clearCart, getCart } from "../cart/cartSlice";
+import store, { RootState } from "../../store";
 import EmptyCart from "../cart/EmptyCart";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
 import React, { useState } from "react";
 import Button from "../../UI/Button";
 
@@ -128,6 +128,8 @@ export async function action({
 
     const newOrder: OrderType = await createOrder(order);
     if (newOrder.id) {
+      store.dispatch(clearCart());
+
       return redirect(`/order/${newOrder.id}`);
     } else {
       console.error("Order ID is undefined.");
