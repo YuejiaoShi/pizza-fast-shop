@@ -40,7 +40,10 @@ const CreateOrder: React.FC = () => {
 
   if (!cart.length) return <EmptyCart />;
 
-  function handleGetGeo() {
+  function handleGetGeo(event?: React.MouseEvent<HTMLButtonElement>) {
+    if (event) {
+      event.preventDefault();
+    }
     dispatch(fetchAddress());
   }
 
