@@ -100,7 +100,7 @@ const CreateOrder: React.FC = () => {
             )}
           </div>
           {!position?.latitude && !position?.longitude && (
-            <span className="absolute right-1">
+            <span className="absolute right-1 top-1 z-50 md:right-[5px] md:top-[5px]">
               <Button
                 type="small"
                 onClick={handleGetGeo}
