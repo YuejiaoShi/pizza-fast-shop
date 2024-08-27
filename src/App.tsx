@@ -1,10 +1,9 @@
-import CreateOrder, {
-  action as createOrderAction,
-} from "./features/order/CreateOrder";
 import { updateOrderAction } from "./features/order/updateOrderAction";
+import { createOrderAction } from "./features/order/createOrderAction";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { orderLoader } from "./features/order/orderLoader";
 import { menuLoader } from "./features/menu/menuLoader";
+import CreateOrder from "./features/order/CreateOrder";
 import Order from "./features/order/Order";
 import Menu from "./features/menu/Menu";
 import Cart from "./features/cart/Cart";

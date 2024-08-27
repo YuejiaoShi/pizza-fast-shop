@@ -1,25 +1,14 @@
-import {
-  createOrder,
-  CreateOrderRequest,
-  OrderType,
-} from "../../servers/apiRestaurant";
-import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
-import { clearCart, getCart, getTotalCartPrice } from "../cart/cartSlice";
-import store, { AppDispatch, RootState } from "../../store";
+import { Form, useActionData, useNavigation } from "react-router-dom";
+import { getCart, getTotalCartPrice } from "../cart/cartSlice";
 import { formatCurrency } from "../../utilities/helpers";
 import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../store";
 import { fetchAddress } from "../user/userSlice";
 import EmptyCart from "../cart/EmptyCart";
 import React, { useState } from "react";
 import Button from "../../UI/Button";
 
-// https://uibakery.io/regex-library/phone-number
-const isValidPhone = (str: string): boolean =>
-  /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
-    str,
-  );
-
-type FormErrors = {
+export type FormErrors = {
   phone?: string;
 };
 
@@ -147,48 +136,5 @@ const CreateOrder: React.FC = () => {
     </div>
   );
 };
-
-export async function action({
-  request,
-}: {
-  request: Request;
-}): Promise<Response> {
-  try {
-    const formData = await request.formData();
-    const data = Object.fromEntries(formData);
-    const order = {
-      ...data,
-      cart: JSON.parse(data.cart as string),
-      priority: data.priority === "true",
-    } as CreateOrderRequest;
-    console.log(order);
-
-    const errors: FormErrors = {};
-    if (!isValidPhone(order.phone))
-      errors.phone = "Please provide a valid phone number.";
-
-    if (Object.keys(errors).length > 0) {
-      return new Response(JSON.stringify(errors), {
-        status: 400,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-    }
-
-    const newOrder: OrderType = await createOrder(order);
-    if (newOrder.id) {
-      store.dispatch(clearCart());
-
-      return redirect(`/order/${newOrder.id}`);
-    } else {
-      console.error("Order ID is undefined.");
-      return redirect("/error");
-    }
-  } catch (error) {
-    console.error("Error in createOrderAction:", error);
-    return redirect("/error");
-  }
-}
 
 export default CreateOrder;
