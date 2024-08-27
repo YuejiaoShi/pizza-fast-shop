@@ -80,7 +80,7 @@ const Order: React.FC = () => {
             ingredients={
               fetcher.data?.find(
                 (pizza: PizzaType) => pizza.id === item.pizzaId,
-              ).ingredients
+              )?.ingredients ?? []
             }
           />
         ))}
