@@ -1,13 +1,9 @@
-import { OrderType } from "../../servers/apiRestaurant";
-import { useFetcher } from "react-router-dom";
+import { updateOrder, UpdateOrderRequest } from "../../servers/apiRestaurant";
+import { ActionFunctionArgs, useFetcher } from "react-router-dom";
 import Button from "../../UI/Button";
 import React from "react";
 
-interface UpdateOrderProps {
-  order: OrderType;
-}
-
-const UpdateOrder: React.FC<UpdateOrderProps> = ({ order }) => {
+const UpdateOrder: React.FC = () => {
   const fetcher = useFetcher();
 
   return (
@@ -19,6 +15,14 @@ const UpdateOrder: React.FC<UpdateOrderProps> = ({ order }) => {
 
 export default UpdateOrder;
 
-export async function action(request, params: type) {
-  return null;
+export async function UpdateOrderAction({
+  params,
+}: ActionFunctionArgs): Promise<void> {
+  const data: UpdateOrderRequest = { priority: true };
+  console.log(params);
+  if (typeof params.orderID === "undefined") {
+    throw new Error("Invalid order Id undefined");
+  } else {
+    await updateOrder(params.orderID, data);
+  }
 }
