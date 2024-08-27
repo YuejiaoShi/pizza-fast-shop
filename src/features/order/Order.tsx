@@ -8,11 +8,15 @@ import {
 import React, { useEffect } from "react";
 
 import {
+  getOrder,
+  PizzaType,
+  type OrderType,
+} from "../../servers/apiRestaurant";
+import {
   LoaderFunctionArgs,
   useFetcher,
   useLoaderData,
 } from "react-router-dom";
-import { getOrder, type OrderType } from "../../servers/apiRestaurant";
 import OrderItem from "./OrderItem";
 
 const Order: React.FC = () => {
@@ -69,7 +73,16 @@ const Order: React.FC = () => {
 
       <ul className="dive-stone-200 divide-y border-b border-t">
         {cart.map((item) => (
-          <OrderItem item={item} key={item.pizzaId} />
+          <OrderItem
+            item={item}
+            key={item.pizzaId}
+            isLoadingIngredients={fetcher.state === "loading"}
+            ingredients={
+              fetcher.data?.find(
+                (pizza: PizzaType) => pizza.id === item.pizzaId,
+              ).ingredients
+            }
+          />
         ))}
       </ul>
 
