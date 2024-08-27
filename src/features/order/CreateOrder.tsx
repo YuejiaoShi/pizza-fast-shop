@@ -122,7 +122,7 @@ const CreateOrder: React.FC = () => {
 
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)}></input>
-          <Button disabled={isSubmitting} type="primary">
+          <Button disabled={isSubmitting || isLoadingAddress} type="primary">
             {isSubmitting
               ? "Placing order..."
               : `Order now from ${formatCurrency(totalPrice)}`}
