@@ -17,6 +17,7 @@ import {
   useFetcher,
   useLoaderData,
 } from "react-router-dom";
+import UpdateOrder from "./UpdateOrder";
 import OrderItem from "./OrderItem";
 
 const Order: React.FC = () => {
@@ -99,6 +100,7 @@ const Order: React.FC = () => {
           To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}
         </p>
       </div>
+      {!priority && <UpdateOrder order={order} />}
     </div>
   );
 };
