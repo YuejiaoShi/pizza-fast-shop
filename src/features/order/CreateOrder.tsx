@@ -93,15 +93,17 @@ const CreateOrder: React.FC = () => {
               defaultValue={address}
             />
           </div>
-          <span className="absolute right-1">
-            <Button
-              type="small"
-              onClick={handleGetGeo}
-              disabled={isLoadingAddress}
-            >
-              Get Your Position
-            </Button>
-          </span>
+          {!position?.latitude && !position?.longitude && (
+            <span className="absolute right-1">
+              <Button
+                type="small"
+                onClick={handleGetGeo}
+                disabled={isLoadingAddress}
+              >
+                Get Your Position
+              </Button>
+            </span>
+          )}
         </div>
 
         <div className="mb-12 flex items-center gap-5">
