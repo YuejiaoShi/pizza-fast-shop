@@ -116,7 +116,7 @@ export async function action({
     const order = {
       ...data,
       cart: JSON.parse(data.cart as string),
-      priority: data.priority === "on",
+      priority: data.priority === "true",
     } as CreateOrderRequest;
     console.log(order);
 
