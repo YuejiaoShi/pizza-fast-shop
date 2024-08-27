@@ -16,7 +16,7 @@ export function getPosition(): Promise<GeolocationPosition> {
 }
 
 export const fetchAddress = createAsyncThunk(
-  "fetchAddress",
+  "user/fetchAddress",
   async function fetchAddress(): Promise<{
     position: Position;
     address: string;
