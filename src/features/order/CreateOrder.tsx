@@ -89,10 +89,15 @@ const CreateOrder: React.FC = () => {
               name="address"
               required
               className="input w-full"
+              disabled={isLoadingAddress}
             />
           </div>
           <span className="absolute right-1">
-            <Button type="small" onClick={handleGetGeo}>
+            <Button
+              type="small"
+              onClick={handleGetGeo}
+              disabled={isLoadingAddress}
+            >
               Get Your Position
             </Button>
           </span>
