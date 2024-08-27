@@ -5,6 +5,7 @@ import {
 } from "../../servers/apiRestaurant";
 import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { clearCart, getCart, getTotalCartPrice } from "../cart/cartSlice";
+import { formatCurrency } from "../../utilities/helpers";
 import store, { RootState } from "../../store";
 import EmptyCart from "../cart/EmptyCart";
 import { useSelector } from "react-redux";
@@ -94,7 +95,9 @@ const CreateOrder: React.FC = () => {
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)}></input>
           <Button disabled={isSubmitting} type="primary">
-            {isSubmitting ? "Placing order..." : "Order now"}
+            {isSubmitting
+              ? "Placing order..."
+              : `Order now from ${formatCurrency(totalPrice)}`}
           </Button>
         </div>
       </Form>
