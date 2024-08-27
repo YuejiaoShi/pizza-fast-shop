@@ -28,12 +28,8 @@ export interface CreateOrderRequest {
   phone: string;
   address: string;
 }
-interface UpdateOrderRequest {
-  items?: {
-    id: string;
-    quantity: number;
-  }[];
-  status?: string;
+export interface UpdateOrderRequest {
+  priority: boolean;
 }
 
 export async function getMenu(): Promise<PizzaType[]> {
@@ -57,7 +53,7 @@ export async function getOrder(id: string): Promise<OrderType> {
 }
 
 export async function createOrder(
-  newOrder: CreateOrderRequest
+  newOrder: CreateOrderRequest,
 ): Promise<OrderType> {
   try {
     const res = await fetch(`${API_URL}/order`, {
@@ -79,7 +75,7 @@ export async function createOrder(
 
 export async function updateOrder(
   id: string,
-  updateObj: UpdateOrderRequest
+  updateObj: UpdateOrderRequest,
 ): Promise<void> {
   try {
     const res = await fetch(`${API_URL}/order/${id}`, {
