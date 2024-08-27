@@ -7,16 +7,8 @@ import {
 } from "../../utilities/helpers";
 import React, { useEffect } from "react";
 
-import {
-  getOrder,
-  PizzaType,
-  type OrderType,
-} from "../../servers/apiRestaurant";
-import {
-  LoaderFunctionArgs,
-  useFetcher,
-  useLoaderData,
-} from "react-router-dom";
+import { PizzaType, type OrderType } from "../../servers/apiRestaurant";
+import { useFetcher, useLoaderData } from "react-router-dom";
 import UpdateOrder from "./UpdateOrder";
 import OrderItem from "./OrderItem";
 
@@ -100,27 +92,9 @@ const Order: React.FC = () => {
           To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}
         </p>
       </div>
-      {!priority && <UpdateOrder order={order} />}
+      {!priority && <UpdateOrder />}
     </div>
   );
-};
-
-// LoaderFunctionArgs types the parameters for a React Router loader function,
-//  including route parameters and request details.
-export const loader = async ({
-  params,
-}: LoaderFunctionArgs): Promise<OrderType> => {
-  if (!params.orderID) {
-    throw new Error("Order ID is missing");
-  }
-  const orderID = params.orderID as string;
-  try {
-    const order = await getOrder(orderID);
-    return order;
-  } catch (error) {
-    console.error("Failed to fetch order:", error);
-    throw new Error(`Failed to fetch order ${orderID}`);
-  }
 };
 
 export default Order;
