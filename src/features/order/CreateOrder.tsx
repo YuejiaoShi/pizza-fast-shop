@@ -37,6 +37,7 @@ const CreateOrder: React.FC = () => {
     status: addressStatue,
     position,
     address,
+    error: errorAddress,
   } = useSelector((state: RootState) => state.user);
   const isLoadingAddress = addressStatue === "loading";
 
@@ -92,6 +93,11 @@ const CreateOrder: React.FC = () => {
               disabled={isLoadingAddress}
               defaultValue={address}
             />
+            {addressStatue === "error" && (
+              <p className="text-xs mt-2 text-red-700 p-2 rounded-md bg-red-100">
+                {errorAddress}
+              </p>
+            )}
           </div>
           {!position?.latitude && !position?.longitude && (
             <span className="absolute right-1">
