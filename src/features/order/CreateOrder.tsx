@@ -82,6 +82,9 @@ const CreateOrder: React.FC = () => {
               className="input w-full"
             />
           </div>
+          <Button type="small" onClick={handleGetGeo}>
+            Get Your Position
+          </Button>
         </div>
 
         <div className="mb-12 flex items-center gap-5">
