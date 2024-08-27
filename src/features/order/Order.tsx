@@ -5,14 +5,27 @@ import {
   formatCurrency,
   formatDate,
 } from "../../utilities/helpers";
-import React from "react";
+import React, { useEffect } from "react";
 
+import {
+  LoaderFunctionArgs,
+  useFetcher,
+  useLoaderData,
+} from "react-router-dom";
 import { getOrder, type OrderType } from "../../servers/apiRestaurant";
-import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 import OrderItem from "./OrderItem";
 
 const Order: React.FC = () => {
   const order = useLoaderData() as OrderType;
+
+  const fetcher = useFetcher();
+  useEffect(
+    function () {
+      if (!fetcher.data && fetcher.state === "idle") fetcher.load("/menu");
+    },
+    [fetcher],
+  );
+
   // Everyone can search for all orders, so for privacy reasons we're gonna
   // exclude names or address, these are only for the restaurant staff
   const {
