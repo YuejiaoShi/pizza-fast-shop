@@ -3,17 +3,13 @@ import UpdateItemQuantity from "./UpdateItemQuantity";
 import { getCurrentQuantityById } from "./cartSlice";
 import { useSelector } from "react-redux";
 import DeleteItem from "./DeleteItem";
+import { CartItem } from "./Cart";
 
-type CartItemProps = {
-  item: {
-    pizzaId: number;
-    name: string;
-    quantity: number;
-    totalPrice: number;
-  };
-};
-
-const CartItem: React.FC<CartItemProps> = ({ item }) => {
+const Item: React.FC<{ item: CartItem; key: number }> = ({
+  item,
+}: {
+  item: CartItem;
+}) => {
   const { pizzaId, name, quantity, totalPrice } = item;
 
   const currentQuantity = useSelector(getCurrentQuantityById(pizzaId));
@@ -35,4 +31,4 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
   );
 };
 
-export default CartItem;
+export default Item;

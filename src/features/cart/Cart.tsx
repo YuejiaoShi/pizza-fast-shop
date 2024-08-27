@@ -4,8 +4,9 @@ import LinkAnchor from "../../UI/LinkAnchor";
 import { RootState } from "../../store";
 import Button from "../../UI/Button";
 import EmptyCart from "./EmptyCart";
-import CartItem from "./CartItem";
+import CartItem from "./Item";
 import React from "react";
+import Item from "./Item";
 
 export type CartItem = {
   pizzaId: number;
@@ -33,7 +34,7 @@ const Cart: React.FC = () => {
 
       <ul className="divide-y divide-stone-200 border-b mt-3">
         {cart.map((item) => (
-          <CartItem item={item} key={item.pizzaId} />
+          <Item item={item} key={item.pizzaId} />
         ))}
       </ul>
 
