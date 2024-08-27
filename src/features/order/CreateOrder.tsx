@@ -72,7 +72,7 @@ const CreateOrder: React.FC = () => {
           </div>
         </div>
 
-        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
+        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center relative">
           <label className="sm:basis-40">Address</label>
           <div className="grow">
             <input
@@ -82,9 +82,11 @@ const CreateOrder: React.FC = () => {
               className="input w-full"
             />
           </div>
-          <Button type="small" onClick={handleGetGeo}>
-            Get Your Position
-          </Button>
+          <span className="absolute right-1">
+            <Button type="small" onClick={handleGetGeo}>
+              Get Your Position
+            </Button>
+          </span>
         </div>
 
         <div className="mb-12 flex items-center gap-5">
