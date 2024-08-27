@@ -19,6 +19,6 @@ const UpdateOrder: React.FC<UpdateOrderProps> = ({ order }) => {
 
 export default UpdateOrder;
 
-async function action(request, params: type) {
+export async function action(request, params: type) {
   return null;
 }
