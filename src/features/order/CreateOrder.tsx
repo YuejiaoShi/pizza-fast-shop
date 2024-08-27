@@ -90,6 +90,7 @@ const CreateOrder: React.FC = () => {
               required
               className="input w-full"
               disabled={isLoadingAddress}
+              defaultValue={address}
             />
           </div>
           <span className="absolute right-1">
