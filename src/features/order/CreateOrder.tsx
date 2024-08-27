@@ -5,10 +5,11 @@ import {
 } from "../../servers/apiRestaurant";
 import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { clearCart, getCart, getTotalCartPrice } from "../cart/cartSlice";
+import store, { AppDispatch, RootState } from "../../store";
 import { formatCurrency } from "../../utilities/helpers";
-import store, { RootState } from "../../store";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAddress } from "../user/userSlice";
 import EmptyCart from "../cart/EmptyCart";
-import { useSelector } from "react-redux";
 import React, { useState } from "react";
 import Button from "../../UI/Button";
 
@@ -25,6 +26,7 @@ type FormErrors = {
 const CreateOrder: React.FC = () => {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
+  const dispatch = useDispatch<AppDispatch>();
 
   const formErrors = useActionData() as FormErrors;
   const [withPriority, setWithPriority] = useState<boolean>(false);
@@ -37,6 +39,10 @@ const CreateOrder: React.FC = () => {
   const totalPrice = totalCartPrice + priorityPrice;
 
   if (!cart.length) return <EmptyCart />;
+
+  function handleGetGeo() {
+    dispatch(fetchAddress());
+  }
 
   return (
     <div className="px-4 py-6">
