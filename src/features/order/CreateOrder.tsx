@@ -84,7 +84,7 @@ const CreateOrder: React.FC = () => {
             type="checkbox"
             name="priority"
             id="priority"
-            value={withPriority}
+            value={withPriority.toString()}
             onChange={(e) => setWithPriority(e.target.checked)}
           />
           <label htmlFor="priority" className="font-medium">
