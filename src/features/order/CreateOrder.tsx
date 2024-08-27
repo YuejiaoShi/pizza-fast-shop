@@ -5,6 +5,7 @@ import {
 } from "../../servers/apiRestaurant";
 import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { getCart } from "../cart/cartSlice";
+import EmptyCart from "../cart/EmptyCart";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import React, { useState } from "react";
@@ -29,6 +30,8 @@ const CreateOrder: React.FC = () => {
   const cart = useSelector(getCart);
 
   const username = useSelector((state: RootState) => state.user.username);
+
+  if (!cart.length) return <EmptyCart />;
 
   return (
     <div className="px-4 py-6">
