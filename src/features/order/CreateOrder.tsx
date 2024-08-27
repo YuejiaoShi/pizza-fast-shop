@@ -8,16 +8,12 @@ import EmptyCart from "../cart/EmptyCart";
 import React, { useState } from "react";
 import Button from "../../UI/Button";
 
-export type FormErrors = {
-  phone?: string;
-};
-
 const CreateOrder: React.FC = () => {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
   const dispatch = useDispatch<AppDispatch>();
 
-  const formErrors = useActionData() as FormErrors;
+  const formErrors = useActionData() as string;
   const [withPriority, setWithPriority] = useState<boolean>(false);
   const cart = useSelector(getCart);
 
@@ -63,9 +59,9 @@ const CreateOrder: React.FC = () => {
           <label className="sm:basis-40">Phone number</label>
           <div className="grow">
             <input type="tel" name="phone" required className="input w-full" />
-            {formErrors?.phone && (
+            {formErrors && (
               <p className="text-xs mt-2 text-red-700 p-2 rounded-md bg-red-100">
-                {formErrors.phone}
+                {formErrors}
               </p>
             )}
           </div>
