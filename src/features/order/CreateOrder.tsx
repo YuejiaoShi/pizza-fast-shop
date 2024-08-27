@@ -32,7 +32,13 @@ const CreateOrder: React.FC = () => {
   const [withPriority, setWithPriority] = useState<boolean>(false);
   const cart = useSelector(getCart);
 
-  const username = useSelector((state: RootState) => state.user.username);
+  const {
+    username,
+    status: addressStatue,
+    position,
+    address,
+  } = useSelector((state: RootState) => state.user);
+  const isLoadingAddress = addressStatue === "loading";
 
   const totalCartPrice = useSelector(getTotalCartPrice);
   const priorityPrice = withPriority ? totalCartPrice * 0.2 : 0;
