@@ -1,4 +1,4 @@
-import { getMenu, type PizzaType } from "../../servers/apiRestaurant";
+import { type PizzaType } from "../../servers/apiRestaurant";
 import { useLoaderData } from "react-router-dom";
 import MenuItem from "./MenuItem";
 import React from "react";
@@ -12,12 +12,6 @@ const Menu: React.FC = () => {
       ))}
     </ul>
   );
-};
-
-// loader function to fetch the menu data
-export const loader = async (): Promise<PizzaType[]> => {
-  const menu: PizzaType[] = await getMenu();
-  return menu;
 };
 
 export default Menu;
