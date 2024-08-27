@@ -27,7 +27,7 @@ const CreateOrder: React.FC = () => {
   const isSubmitting = navigation.state === "submitting";
 
   const formErrors = useActionData() as FormErrors;
-  // const [withPriority, setWithPriority] = useState<boolean>(false);
+  const [withPriority, setWithPriority] = useState<boolean>(false);
   const cart = useSelector(getCart);
 
   const username = useSelector((state: RootState) => state.user.username);
@@ -84,8 +84,8 @@ const CreateOrder: React.FC = () => {
             type="checkbox"
             name="priority"
             id="priority"
-            // value={withPriority}
-            // onChange={(e) => setWithPriority(e.target.checked)}
+            value={withPriority}
+            onChange={(e) => setWithPriority(e.target.checked)}
           />
           <label htmlFor="priority" className="font-medium">
             Want to yo give your order priority?
