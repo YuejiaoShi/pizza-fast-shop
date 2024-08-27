@@ -26,8 +26,6 @@ const cartSlice = createSlice({
       );
       if (itemToUpdate) {
         itemToUpdate.quantity++;
-        itemToUpdate.totalPrice =
-          itemToUpdate.unitPrice * itemToUpdate.quantity;
       }
     },
     decreaseItemQuantity(state, action: PayloadAction<number>) {
@@ -36,11 +34,10 @@ const cartSlice = createSlice({
       );
       if (itemToUpdate) {
         itemToUpdate.quantity--;
-        itemToUpdate.totalPrice =
-          itemToUpdate.unitPrice * itemToUpdate.quantity;
       }
-      if (itemToUpdate?.quantity === 0)
+      if (itemToUpdate?.quantity === 0) {
         cartSlice.caseReducers.deleteItem(state, action);
+      }
     },
     clearCart(state) {
       state.cart = [];
@@ -62,7 +59,7 @@ export const getTotalCartQuantity = (state: RootState) =>
   state.cart.cart.reduce((sum, item) => sum + item.quantity, 0);
 
 export const getTotalCartPrice = (state: RootState) =>
-  state.cart.cart.reduce((sum, item) => sum + item.totalPrice, 0);
+  state.cart.cart.reduce((sum, item) => sum + item.quantity * item.unitPrice, 0);
 
 export const getCart = (state: RootState) => state.cart.cart;
 
