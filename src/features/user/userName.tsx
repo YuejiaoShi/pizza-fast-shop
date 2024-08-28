@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 
-const UserName = () => {
+const UserName: React.FC = () => {
   const username = useSelector((state: RootState) => state.user.username);
 
   if (!username) return null;
