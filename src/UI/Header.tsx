@@ -1,5 +1,4 @@
 import SearchOrder from "../features/order/SearchOrder";
-import UserName from "../features/user/UserName.tsx";
 import { Link } from "react-router-dom";
 import React from "react";
 
@@ -10,7 +9,6 @@ const Header: React.FC = () => {
         Pizza Fast Denmark A/S
       </Link>
       <SearchOrder />
-      <UserName />
     </header>
   );
 };
