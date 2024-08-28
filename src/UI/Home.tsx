@@ -1,8 +1,8 @@
-import React from "react";
 import CreateUser from "../features/user/CreateUser";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import Button from "./Button";
+import React from "react";
 
 const Home: React.FC = () => {
   const username = useSelector((state: RootState) => state.user.username);
