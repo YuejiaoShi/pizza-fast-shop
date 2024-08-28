@@ -3,7 +3,7 @@ import { ActionFunctionArgs } from "react-router-dom";
 
 export async function updateOrderAction({
   params,
-}: ActionFunctionArgs): Promise<void> {
+}: ActionFunctionArgs): Promise<null> {
   const data: UpdateOrderRequest = { priority: true };
   console.log(params);
   if (typeof params.orderID === "undefined") {
@@ -11,4 +11,5 @@ export async function updateOrderAction({
   } else {
     await updateOrder(params.orderID, data);
   }
+  return null;
 }
