@@ -16,8 +16,7 @@ Pizza Fast Denmark is a modern web application for ordering pizzas, built using 
 [<img alt="Redux Toolkit & React Redux" src="https://img.shields.io/badge/-Redux_Toolkit-764ABC?style=flat-square&logo=redux&logoColor=white" height="25">](https://redux.js.org/) For state management, store configuration, and connecting React components.
 
 ## Visual Overview
-
-### Complete App Overview
+[<img src="./visual-overview.gif" alt="Gif Pizza Fast" width="700"/>](./visual-overview.gif)
 
 ## Features
 
