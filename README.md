@@ -18,3 +18,20 @@ Pizza Fast Denmark is a modern web application for ordering pizzas, built using 
 ## Visual Overview
 
 ### Complete App Overview
+
+## Features
+
+- **Pizza Menu:** Browse various pizzas with detailed descriptions and customization options.
+- **Order Management:** Add, update, and remove items from the cart with TypeScript type safety.
+- **Order Placement:** Complete orders with a form, including robust error handling for invalid input.
+- **User State Management:** Persistent user state with Redux Toolkit, covering authentication and order history.
+- **Priority Order Modification:** Allow modify order priorities even after submission.
+- **Responsive Design:** Optimized for both desktop and mobile devices.
+- **Loading and Error Handling:** Integrated indicators and error messages for a smooth user experience.
+- **Type Safety:** Strongly typed components and state management using TypeScript.
+
+## More Projects...
+
+- [WordWise](https://github.com/YuejiaoShi/WordWise/) - Travel-Tracking and City-Mapping app
+- [usePopCorn](https://github.com/YuejiaoShi/movie-app) - Movie Exploration and Management app
+- [Recipestic](https://github.com/YuejiaoShi/recipe-app) - Recipe Manager with Timer & Customization app
